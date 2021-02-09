@@ -142,7 +142,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
-        ImageView ivProfile;
+        // ImageView ivProfile;
 
         public NormalViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -150,7 +150,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             container = itemView.findViewById(R.id.container);
-            ivProfile = itemView.findViewById(R.id.ivProfile);
+            // ivProfile = itemView.findViewById(R.id.ivProfile);
         }
 
         public void bind(Movie movie) {
