@@ -2,17 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#232323">
 
     <ImageView
         android:id="@+id/ivBackdrop"
-        android:layout_width="727dp"
-        android:layout_height="400dp"
+        android:layout_width="709dp"
+        android:layout_height="375dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:adjustViewBounds="false"
         android:scaleType="fitXY"
         tools:layout_editor_absoluteX="5dp"
