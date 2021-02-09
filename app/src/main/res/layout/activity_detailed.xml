@@ -34,5 +34,11 @@
         android:layout_height="wrap_content"
         tools:text="Overview " />
 
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:transitionName="profile"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="380dp" />
 
 </LinearLayout>

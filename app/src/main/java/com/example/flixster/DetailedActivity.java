@@ -25,6 +25,7 @@ import okhttp3.Headers;
 
 public class DetailedActivity extends YouTubeBaseActivity {
 
+    public static final double STAR_LIMIT = 6.5;
     private static final String YOUTUBE_API_KEY = "AIzaSyC-oOrywyPr4QXYhIDKusbIEWLzo5OZj-8";
     public static final String VIDEOS_URL = "https://api.themoviedb.org/3/movie/%d/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
@@ -61,7 +62,7 @@ public class DetailedActivity extends YouTubeBaseActivity {
                     }
                     String youtubeKey = results.getJSONObject(0).getString("key");
                     Log.d("DetailedActivity", youtubeKey);
-                    initializeYouTube(youtubeKey);
+                    initializeYouTube(youtubeKey, movie.getStars());
                 } catch (JSONException e) {
                     Log.e("DetailedActivity", "Failed to parse JSON", e);
                 }
@@ -74,14 +75,16 @@ public class DetailedActivity extends YouTubeBaseActivity {
         });
 
     }
-    private void initializeYouTube(String youtubeKey) {
+    private void initializeYouTube(String youtubeKey, double stars) {
         youTubePlayerView.initialize(YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailedActivity", "onSuccess");
-
-                // do any work here to cue video, play video, etc.
-                youTubePlayer.cueVideo(youtubeKey);
+                if (stars > STAR_LIMIT) {
+                    youTubePlayer.loadVideo(youtubeKey);
+                } else {
+                    youTubePlayer.cueVideo(youtubeKey);
+                }
             }
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {

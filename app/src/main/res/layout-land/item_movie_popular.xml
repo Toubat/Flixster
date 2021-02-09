@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/ivBackdrop"
+        android:transitionName="profile"
         android:layout_width="709dp"
         android:layout_height="375dp"
         android:layout_alignParentTop="true"
@@ -20,4 +21,14 @@
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="6dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="154dp"
+        android:layout_height="112dp"
+        android:layout_centerInParent="true"
+        android:alpha="0.75"
+        app:srcCompat="@drawable/youtube_social_icon_dark" />
+
+
 </RelativeLayout>

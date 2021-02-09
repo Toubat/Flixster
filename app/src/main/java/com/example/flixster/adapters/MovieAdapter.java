@@ -3,6 +3,7 @@ package com.example.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.media.Image;
 import android.os.Parcel;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
@@ -26,12 +28,15 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final String TAG = "MovieAdapter";
     public static final double STAR_LIMIT = 6.5;
     private final int POPULAR = 1;
     private final int NORMAL = 0;
+
     Context context;
     List<Movie> movies;
 
@@ -110,7 +115,13 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public void bind(Movie movie) {
             // Load image into ImageView
-            Glide.with(context).load(movie.getBackdropPath()).placeholder(R.drawable.ic_launcher_background).into(ivBackdrop);
+            int radius = 25; // corner radius, higher value = more rounded
+            int margin = 10; // crop margin, set to 0 for corners with no crop
+            Glide.with(context)
+                    .load(movie.getBackdropPath())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .transform(new RoundedCornersTransformation(radius, margin))
+                    .into(ivBackdrop);
 
             // Register click listener on the whole row
             container.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +142,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        ImageView ivProfile;
 
         public NormalViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -138,6 +150,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             container = itemView.findViewById(R.id.container);
+            ivProfile = itemView.findViewById(R.id.ivProfile);
         }
 
         public void bind(Movie movie) {
@@ -152,7 +165,13 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 imageUrl = movie.getPosterPath();
             }
             // Load image into ImageView
-            Glide.with(context).load(imageUrl).placeholder(R.drawable.ic_launcher_background).into(ivPoster);
+            int radius = 25; // corner radius, higher value = more rounded
+            int margin = 10; // crop margin, set to 0 for corners with no crop
+            Glide.with(context)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .transform(new RoundedCornersTransformation(radius, margin))
+                    .into(ivPoster);
 
             // Register click listener on the whole row
             container.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +181,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     // Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(context, DetailedActivity.class);
                     i.putExtra("movie", Parcels.wrap(movie));
+
                     context.startActivity(i);
                 }
             });

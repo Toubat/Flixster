@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
     android:background="#232323">
 
     <ImageView
@@ -19,7 +20,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:scaleType="fitXY"
+        android:transitionName="profile"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="6dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="161dp"
+        android:layout_height="77dp"
+        android:layout_centerInParent="true"
+        android:alpha="0.75"
+        app:srcCompat="@drawable/youtube_social_icon_dark" />
+
+
 </RelativeLayout>
