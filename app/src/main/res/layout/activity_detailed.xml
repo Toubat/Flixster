@@ -16,6 +16,7 @@
 
     <TextView
         android:id="@+id/tvTitle_d"
+        android:transitionName="title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
@@ -32,6 +33,7 @@
 
     <TextView
         android:id="@+id/tvOverview_d"
+        android:transitionName="overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Overview " />

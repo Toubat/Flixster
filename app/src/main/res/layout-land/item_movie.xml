@@ -34,6 +34,7 @@
 
     <TextView
         android:id="@+id/tvOverview"
+        android:transitionName="overview"
         android:layout_width="377dp"
         android:layout_height="150dp"
         android:layout_below="@+id/tvTitle"
