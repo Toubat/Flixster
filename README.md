@@ -42,7 +42,7 @@ When building this app, the most challenge part is how to align image size to fi
 
 #### BONUS
 
-- [ ] Implement a shared element transition when user clicks into the details of a movie (1 point).
+- [x] Implement a shared element transition when user clicks into the details of a movie (1 point).
 - [x] Trailers for popular movies are played automatically when the movie is selected (1 point).
   - [x] When clicking on a popular movie (i.e. a movie voted for more than 5 stars) the video should be played immediately.
   - [ ] Less popular videos rely on the detailed page should show an image preview that can initiate playing a YouTube video.
